@@ -19,6 +19,8 @@ gem 'rails', '4.2.1'
 gem 'haml-rails', '~> 0.9'
 # Zurb Foundation CSS framework
 gem 'foundation-rails'
+# simpler form helper
+gem 'simple_form'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
