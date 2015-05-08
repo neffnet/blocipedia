@@ -15,6 +15,8 @@ end
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+# Templates created in HAML by default
+gem 'haml-rails', '~> 0.9'
 # Zurb Foundation CSS framework
 gem 'foundation-rails'
 # Use SCSS for stylesheets
