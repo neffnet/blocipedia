@@ -15,11 +15,14 @@
       .small-2.columns.text-center
         = link_to 'BLOCIPEDIA', root_path
       .small-8.columns
-        This is a Sign-in-form or User-Welcome
+        - if current_user
+          = link_to "Log out", destroy_user_session_path, method: :delete
+        - else
+          = render 'welcome/login'
       .small-2.columns
         About Blocipedia
     
-    = render 'show_flash'
+    = render 'welcome/show_flash'
     = yield
     
 

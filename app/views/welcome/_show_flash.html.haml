@@ -2,5 +2,5 @@
 - flashes.each do |key, value|
   - if flash[key]
     .alert-box.radius{'data-alert' => '', 'class' => value}
-      = flash[key].msg
+      = flash[key]
       %a.close{'href' => '#'} &times;
