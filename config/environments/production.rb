@@ -79,4 +79,6 @@ Rails.application.configure do
 
   # Mail sender configuration:
   config.action_mailer.default_url_options = { :host => 'neffnet-blocipedia.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
 end
