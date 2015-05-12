@@ -11,15 +11,15 @@
 
   %body
 
-    #top-bar
-      .small-2.columns.text-center
+    #top-bar.full-width
+      .small-2.large-2.columns.text-center
         = link_to 'BLOCIPEDIA', root_path
-      .small-8.columns
+      .small-8.large-8.columns
         - if current_user
           = link_to "Log out", destroy_user_session_path, method: :delete
         - else
           = render 'welcome/login'
-      .small-2.columns
+      .small-2.large-2.columns
         About Blocipedia
     
     = render 'welcome/show_flash'
