@@ -24,6 +24,13 @@ body {
   max-width: 90%;
 }
 
+#main-flash {
+  position: absolute;
+  right: 2rem;
+  top: 3rem;
+  z-index: 3;
+}
+
 #top-bar {
   padding-top: 0.2rem;
 }

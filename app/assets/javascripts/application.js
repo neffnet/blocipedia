@@ -17,3 +17,9 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+if ($('.alert-box').length >= 0) {
+  setTimeout(function(){
+      $('.alert-box .close').click();
+    }, 2000);
+}
