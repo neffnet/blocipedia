@@ -1,2 +1,4 @@
-%h2 Welcome to your Blocipedia, 
-= @user.name
+%h2 Welcome to your Blocipedia, #{@user.name}
+
+%h3 Make a new wiki:
+= link_to 'Create a Wiki', new_user_wiki_path(current_user), class: 'button radius'
