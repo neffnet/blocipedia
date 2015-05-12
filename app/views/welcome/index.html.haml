@@ -1,6 +1,34 @@
-.row
-  .small-12.columns
-    %h1 Welcome to Blocipedia
-.row
-  .small-11.columns
-    = link_to "Sign up for free", new_user_registration_path
+#landing.row
+
+  .large-8.large-push-4.columns
+    #info1
+      %h1.text-center Welcome to Blocipedia
+      %p Blocipedia is your organization's custom encyclopedia. This is a paragraph all about how great Blocipedia is. It has a call to action to sign up below.
+
+    %ul#free.pricing-table.large-6.columns
+      %li.title FREE
+      %li.price $0/forever
+      %li.description Create public wikis for the world to enjoy
+      %li.bullet-item Unlimited number of wikis
+      %li.bullet-item Group your wikis together in a public profile
+      %li.bullet-item Any Blocipedia user may contribute to your work
+      %li.cta-button
+        = link_to "Sign up FREE", new_user_registration_path, class: "button success radius"
+
+    %ul#premium.pricing-table.large-6.columns
+      %li.title PREMIUM
+      %li.price $7/month
+      %li.description Access to all FREE features plus private wikis that you control
+      %li.bullet-item Unlimited number of public or private wikis
+      %li.bullet-item Designate which Blocipedia users may read or edit your wikis
+      %li.bullet-item 24/7/365 award-winning customer support
+      %li.cta-button
+        .button.disabled Upgrade
+
+  #recent.large-4.large-pull-8.columns
+    %h3 Recent Wikis
+    %p This could be a list of recently updated public wikis
+    .small-8.columns
+      = text_field nil, nil, placeholder: "Search public wikis"
+    .small-4.columns
+      .button.tiny.disabled Search

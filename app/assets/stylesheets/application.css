@@ -20,11 +20,19 @@ body {
   background-color: #e6e6e6;
 }
 
+.row {
+  max-width: 90%;
+}
+
 #top-bar {
   padding-top: 0.2rem;
 }
 #top-bar input {
   margin: 0rem 0rem 0.1rem 0rem;
+}
+
+#recent{
+  top: 4rem;
 }
 
 .full-width {
