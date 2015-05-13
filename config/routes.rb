@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :wikis, shallow: true
   end
 
+  get 'about' => 'welcome#about'
+
   root to: 'welcome#index'
 
 end

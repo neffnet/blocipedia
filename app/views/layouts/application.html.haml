@@ -12,18 +12,20 @@
   %body
 
     #top-bar.full-width
-      .small-2.large-2.columns.text-center
+      .show-for-large-up.large-2.columns.text-center
         = link_to 'BLOCIPEDIA', root_path
-      .small-8.large-8.columns
+      .small-10.large-8.columns
         - if current_user
           Welcome, #{ link_to current_user.name, user_path(current_user) } ||
           = link_to "Log out", destroy_user_session_path, method: :delete
         - else
           = render 'welcome/login'
       .small-2.large-2.columns
-        = link_to 'About Blocipedia', root_path
+        = link_to 'About Blocipedia', about_path
     
     = render 'welcome/show_flash'
-    = yield
+
+    .row
+      = yield
     
 
