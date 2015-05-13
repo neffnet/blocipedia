@@ -1,4 +1,15 @@
-%h2 Welcome to your Blocipedia, #{@user.name}
+.medium-8.medium-push-4.columns
+  %h3 #{ @user.name } Wikis
+  - if @user.wikis.any?
+    = render 'wikis'
+  - else
+    %p #{ @user.name } has not created any wikis (that you have permission to view)
+  = link_to 'New Wiki', new_user_wiki_path(@user), class: 'button'
 
-%h3 Make a new wiki:
-= link_to 'Create a Wiki', new_user_wiki_path(current_user), class: 'button radius'
+.medium-4.medium-pull-8.columns
+  %p This side bar will have items like
+  %ul
+    %li Account Status
+    %li Number of wikis
+    %li Member since
+    %li Homepage link
