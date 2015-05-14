@@ -23,6 +23,8 @@ gem 'foundation-rails'
 gem 'simple_form'
 # Devise gem for user authentication
 gem 'devise'
+# Pundit handles user authorization and policies
+gem 'pundit'
 # Figaro to protect environment variables
 gem 'figaro', '1.0'
 # Use SCSS for stylesheets
