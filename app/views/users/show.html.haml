@@ -1,15 +1,18 @@
-.medium-8.medium-push-4.columns
-  %h3 #{ @user.name } Wikis
-  - if @user.wikis.any?
-    = render 'wikis'
-  - else
-    %p #{ @user.name } has not created any wikis (that you have permission to view)
-  = link_to 'New Wiki', new_user_wiki_path(@user), class: 'button'
+#user-show  
+  #us-right.medium-8.medium-push-4.columns
+    %h2.text-center #{ @user.name }
+    - if @wikis.any?
+      %h3 Wikis:
+      = render @wikis
+    - else
+      %p #{ @user.name } has not created any wikis (that you have permission to view)
+    - if ( current_user == @user ) 
+      = link_to 'New Wiki', new_wiki_path(@wiki), class: 'button'
 
-.medium-4.medium-pull-8.columns
-  %p This side bar will have items like
-  %ul
-    %li Account Status
-    %li Number of wikis
-    %li Member since
-    %li Homepage link
+  #us-left.medium-4.medium-pull-8.columns
+    %h4 This side bar will have items like
+    %ul
+      %li Account Status
+      %li Number of wikis
+      %li Member since
+      %li Homepage link

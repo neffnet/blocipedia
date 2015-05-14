@@ -1,0 +1,7 @@
+#wiki-form.large-6.columns
+  = simple_form_for @wiki do |f|
+    = f.input :title, placeholder: 'Title'
+    = f.input :body, placeholder: 'Write your wiki here...', input_html: {rows: 10}
+    = f.submit "Save", class: "button radius"
+#wiki-preview.large-6.columns
+  %p Soon this space will show a live preview of what your wiki will look like...

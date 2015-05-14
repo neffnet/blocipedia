@@ -1,3 +1,9 @@
-%h1= @wiki.title
-%p= @wiki.body
+.wiki-show
+  %h1= @wiki.title
+  %p= @wiki.body
+
+  - if current_user
+    = link_to 'Edit', edit_wiki_path(@wiki), class: 'button'
+  - if ( @wiki.user == current_user )
+    = link_to 'Delete', wiki_path(@wiki), method: :DELETE, class: 'button alert', data: {confirm: 'Are you really sure you want to permanently this wiki?'} 
 
