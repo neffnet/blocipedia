@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+
   def show
     @wiki = Wiki.find(params[:id])
     authorize @wiki
@@ -12,7 +13,13 @@ class WikisController < ApplicationController
   def create
     @wiki = current_user.wikis.create(wiki_params)
     authorize @wiki
-    redirect_to @wiki
+
+    if @wiki.save
+      redirect_to @wiki
+    else
+      flash[:error] = @wiki.errors
+      render :new
+    end
   end
 
   def edit
@@ -27,7 +34,7 @@ class WikisController < ApplicationController
       flash[:notice] = "Wiki updated!"
       redirect_to @wiki
     else
-      flash[:error] = "We messed up. Please try again, or contact us"
+      flash[:error] = @wiki.errors
       render :edit
     end
   end
@@ -36,7 +43,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     authorize @wiki
     if @wiki.destroy
-      flash[:notice] = "The wiki --#{@wiki.title}-- has been deleted"
+      flash[:notice] = "The wiki \"#{@wiki.title}\" has been deleted"
       redirect_to user_path(@wiki.user)
     else
       flash[:error] = "We messed up. Please try again, or contact us"
@@ -49,4 +56,5 @@ class WikisController < ApplicationController
   def wiki_params
     params.require(:wiki).permit(:title,:body,:private)
   end
+
 end

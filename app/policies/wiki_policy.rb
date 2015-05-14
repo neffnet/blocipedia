@@ -9,6 +9,6 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && ( record.user == current_user || current_user.admin? )
+    user.present? && ( record.user == user || user.admin? )
   end
 end

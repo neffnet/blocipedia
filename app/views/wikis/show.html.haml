@@ -2,9 +2,14 @@
   %li= link_to 'BLOCIPEDIA', root_path
   %li= link_to @wiki.user.name, user_path(@wiki.user)
   %li.current= @wiki.title
+  %li.show-for-medium-up Created #{ @wiki.created_at.strftime('%B %e, %Y') }
+  %li.hidden-for-medium-up Created #{ @wiki.created_at.strftime('%m/%d/%y') }
+  - if (@wiki.created_at != @wiki.updated_at)
+    %li.show-for-medium-up Edited #{ @wiki.updated_at.strftime('%B %e, %Y') }
+    %li.hidden-for-medium-up Edited #{ @wiki.updated_at.strftime('%m/%d/%y') }
 .wiki-show.row
   %h1= @wiki.title
-  %p= @wiki.body
+  %p= simple_format @wiki.body
 
   - if current_user
     = link_to 'Edit', edit_wiki_path(@wiki), class: 'button'
