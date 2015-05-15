@@ -28,8 +28,14 @@
 
   #recent.large-3.large-pull-9.columns
     %h3 Recent Wikis
-    %p This could be a list of recently updated public wikis
-    .small-8.columns
-      = text_field nil, nil, placeholder: "Search public wikis"
-    .small-4.columns
-      .button.tiny.disabled Search
+    %ul
+    - @wikis.each do |wiki|
+      %li
+        = link_to wiki.title, wiki_path(wiki)
+    = text_field nil, nil, placeholder: "Filter public wikis"
+    %h3 Recent Users
+    %ul
+    - @users.each do |user|
+      %li
+        = link_to user.name, user_path(user)
+    = text_field nil, nil, placeholder: "Search users"

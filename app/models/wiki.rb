@@ -7,6 +7,9 @@ class Wiki < ActiveRecord::Base
 
   after_initialize :init, unless: :persisted?
 
+  scope :recent, ->(num) { order('updated_at DESC').limit(num) }
+
+
   def private?
     wiki.private
   end
