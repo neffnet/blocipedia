@@ -23,6 +23,8 @@ gem 'foundation-rails'
 gem 'simple_form'
 # Devise gem for user authentication
 gem 'devise'
+# Stripe to process payments
+gem 'stripe'
 # Faker to populate database
 gem 'faker'
 # Pundit handles user authorization and policies
