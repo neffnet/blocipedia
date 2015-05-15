@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    request.original_url
-    # user_path(current_user)
+    request.referrer
   end
 
   protected
