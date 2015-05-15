@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
   after_initialize :init, unless: :persisted?
 
-  scope :recent, -> (num) { order('last_sign_in_at DESC').limit(num) }
-  #TODO: need to add something like ` .where(user.wikis.length > 0) `
+  def self.recent_with_wikis(num)
+    where('EXISTS(SELECT 1 FROM wikis WHERE user_id = users.id)').order('last_sign_in_at DESC').limit(num)
+  end
 
   def admin?
     role == 'admin'
