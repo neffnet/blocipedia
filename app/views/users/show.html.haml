@@ -4,16 +4,23 @@
     - if @wikis.any?
       %h3 Wikis:
       = render @wikis
-    - else
-      %p #{ @user.name } has not created any wikis (that you have permission to view)
+    - elsif current_user != @user
+      %p #{ @user.name } has not created any public wikis. If you expected to see something here, please make sure you are signed in and that #{ @user.name } has added your username to their list of contributors.
     - if ( current_user == @user ) 
       = link_to 'New Wiki', new_wiki_path(@wiki), class: 'button'
+    - if current_user == @user && current_user.standard?
+      %p You are currently using the free version of Blocipedia. You may create as many Wikis as you like and share them using this URL; your readers don't need to sign in to view your Wikis. Any other Blocipedia members may login and edit your work. We think the people here are pretty nice, but if you're worried about vandalism you should probably save a local copy of your Wiki. (As of today, we do not have the capability to restore old versions of your Wikis.) You are the only person who may create or delete Wikis from your profile.
+
+      %p We also offer a Premium Membership that allows you to choose if your Wikis are public or private. This is a great service for small organizations who need to maintain a collection of documents that all team members can easily access or edit. When you make a private Wiki, you'll be able to designate a list of Blocipedia contributors. These contributors will be the only members who can see or edit your Wikis.
+
+      %p Ready to go Premium?
+      = render 'charges/button'  
 
   #us-left.medium-4.medium-pull-8.columns
     %h4 User Info
     %ul
       %li #{@user.role.capitalize} User
-      %li Has #{pluralize(@user.wikis.length, Wiki)}
+      %li Has #{pluralize(@user.wikis.length, 'Wiki')}
       %li Member since #{@user.created_at.strftime('%B %-d, %Y')}
       %li Last seen on #{@user.created_at.strftime('%B %-d, %Y')}
       - if @user.homepage
