@@ -10,9 +10,11 @@
       = link_to 'New Wiki', new_wiki_path(@wiki), class: 'button'
 
   #us-left.medium-4.medium-pull-8.columns
-    %h4 This side bar will have items like
+    %h4 User Info
     %ul
-      %li Account Status
-      %li Number of wikis
-      %li Member since
-      %li Homepage link
+      %li #{@user.role.capitalize} User
+      %li Has #{pluralize(@user.wikis.length, Wiki)}
+      %li Member since #{@user.created_at.strftime('%B %-d, %Y')}
+      %li Last seen on #{@user.created_at.strftime('%B %-d, %Y')}
+      - if @user.homepage
+        %li= link_to @user.homepage
