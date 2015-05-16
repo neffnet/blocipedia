@@ -12,16 +12,16 @@
   %body
 
     #top-bar.full-width
-      .show-for-large-up.large-2.columns.text-center
+      .show-for-medium-up.medium-2.columns.text-center
         = link_to 'BLOCIPEDIA', root_path
-      .small-10.large-8.columns
+      .small-9.medium-8.columns
         - if current_user
           Welcome, #{'&#9734;'.html_safe if current_user.premium?}#{ link_to current_user.name, user_path(current_user) } ||
           = link_to "Log out", destroy_user_session_path, method: :delete
         - else
           = render 'welcome/login'
-      .small-2.large-2.columns
-        = link_to 'About Blocipedia', about_path
+      .small-3.medium-2.columns
+        = link_to 'About', about_path
     
     = render 'welcome/show_flash'
 
