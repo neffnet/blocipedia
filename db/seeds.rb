@@ -5,7 +5,8 @@ u = User.where(name:'test').first_or_initialize(
   name:'test',
   password: 'hello',
   password_confirmation: 'hello',
-  email: 'user@example.com'
+  email: 'user@example.com',
+  homepage: Faker::Internet.url
   )
 u.skip_confirmation!
 u.save
@@ -16,7 +17,8 @@ u.save
     name: Faker::Internet.user_name,
     email: Faker::Internet.email,
     password: 'hello',
-    password_confirmation: 'hello' 
+    password_confirmation: 'hello',
+    homepage: Faker::Internet.url 
   )
   u.skip_confirmation!
   u.save
@@ -24,9 +26,11 @@ end
 
 # create some Wikis
 20.times do
+  body = Faker::Lorem.paragraph
+  3.times{body << "<br><br>" << Faker::Lorem.paragraph}
   w = Wiki.new(
     title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraph,
+    body: body,
     user: User.all.sample
   )
   w.save
