@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def standard?
-    role = 'standard'
+    role == 'standard'
   end
 
   def init

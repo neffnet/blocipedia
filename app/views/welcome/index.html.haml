@@ -16,15 +16,24 @@
       %li.cta-button
         = link_to "Sign up FREE", new_user_registration_path, class: "button success radius"
 
-    %ul#premium.pricing-table.large-6.columns
-      %li.title PREMIUM
+    - classes = ['pricing-table', 'large-6', 'columns', ('faded' if current_user && current_user.premium?)]
+    %ul#premium{class: classes}
+      %li.title &#9734; PREMIUM &#9734;
       %li.price $15 one-time-fee
       %li.description Access to all FREE features plus private wikis that you control
       %li.bullet-item Unlimited number of public or private wikis
       %li.bullet-item Designate which Blocipedia users may read or edit your wikis
       %li.bullet-item 24/7/365 award-winning customer support
       %li.cta-button
-        .button.disabled Upgrade
+        - if current_user && !current_user.premium?
+          = render 'charges/button'
+        - elsif user_signed_in? && current_user.premium?
+          .button.disabled
+            Thanks for already going Premium!
+        - else
+          .button.disabled
+            Please sign in first...
+
 
   #recent.large-3.large-pull-9.columns
     %h3 Recent Wikis
