@@ -24,4 +24,4 @@
       %li Member since #{@user.created_at.strftime('%B %-d, %Y')}
       %li Last seen on #{@user.created_at.strftime('%B %-d, %Y')}
       - if @user.homepage
-        %li= link_to @user.homepage
+        %li= link_to @user.homepage, @user.homepage
