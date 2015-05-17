@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit] do
+    post '/downgrade' => 'users#downgrade', as: :downgrade
+  end
+
   resources :wikis
   resources :charges, only: [:new, :create]
   get 'about' => 'welcome#about'

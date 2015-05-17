@@ -1,27 +1,40 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="edit_user" class="small-11 medium-9 large-7 columns">
+  <h2>Update User Info</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-inputs">
+      <%= f.input :name, autofocus: false, readonly: true, label: "You can't change your name." %>
+      <%= f.input :email, required: true, autofocus: true, label: 'We will send a new confirmation email if you change this' %>
+      <%= f.input :homepage, required: false %>
+      <%= f.input :password, autocomplete: "off", label: "Leave this blank if you don't want to change your password", placeholder: 'new password', required: false %>
+      <%= f.input :password_confirmation, required: false, placeholder:'confirm new password' %>
+      <%= f.input :current_password, label: "Enter your current password to confirm any changes", required: true, placeholder:'current password' %>
+    </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <%= f.input :homepage, required: false %>
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <div class="form-actions">
+      <%= f.button :submit, "Update" %>
+    </div>
+  <% end %>
+
+  <div id="account_status">
+  <% if @user.standard? %>
+    <p>Thank you for using Blocipedia! If you have found this website useful or enjoyable, please consider upgrading your account. In addition to supporting the Blocipedia developers, your Premium membership gives you the option to designate wikis as private, so that only you and your list of contributors may access the wiki. This is a good solution for small organizations to share information without exposing it on a public website.</p>
+    <p>Ready to upgrade? Premium memberships cost a one-time-fee of $15 and never expire.</p>
+    <%= render 'charges/button' %>
+  <% elsif @user.premium? %>
+    <p>Thank you for being a Premium member! Your support helps us make Blocipedia better for everyone.</p>
+    <p>Premium memberships come with a one-time-fee; you will never be charged again and your membership never expires. However, you may downgrade your account back to standard if you really want to. Please note that if you have any private wikis, they will become public if you do this. Be sure to delete any that have sensitive information.</p>
+    <%= link_to 'Downgrade', user_downgrade_path(@user), method: :post, class: 'button alert tiny', data: { confirm: "Are you sure? All your private wikis will become private, and you will need to pay again if you change your mind later."} %>
+  <% elsif @user.admin? %>
+
+  <% end %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div id="cancel_account">
+  <h3>Delete me</h3>
+  <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure? (Any wikis you own will be permanently deleted.)" }, class: 'button alert tiny', method: :delete %><br>
+  <span>Note: If you do this your wikis will be permamently removed from the site.</span>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
