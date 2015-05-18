@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users, only: [:show, :edit] do
+  resources :users, only: [:show] do
     post '/downgrade' => 'users#downgrade', as: :downgrade
   end
 

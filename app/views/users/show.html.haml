@@ -25,3 +25,5 @@
       %li Last seen on #{@user.created_at.strftime('%B %-d, %Y')}
       - if @user.homepage
         %li= link_to @user.homepage, @user.homepage
+    -if @user == current_user
+      =link_to 'Edit Info', edit_user_registration_path, class: 'button small'
