@@ -1,10 +1,7 @@
 class ChargesController < ApplicationController
+  include StripeData
+  
   def new
-    @stripe_btn_data = {
-      key: "#{ENV['STRIPE_PUBLISHABLE_KEY']}",
-      description: "Premium membership for: #{current_user.name}, #{current_user.email}",
-      amount: Amount.default
-    }
   end
 
   def create
