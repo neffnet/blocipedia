@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    authorize @user
     @stripe_btn_data = {
       key: "#{ENV['STRIPE_PUBLISHABLE_KEY']}",
       description: "Upgrade to Premium",
