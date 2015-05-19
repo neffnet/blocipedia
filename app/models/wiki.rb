@@ -9,7 +9,7 @@ class Wiki < ActiveRecord::Base
 
   after_initialize :init, unless: :persisted?
 
-  scope :recent, ->(num) { order('updated_at DESC').limit(num) }
+  scope :recent, ->(num) { order('updated_at DESC').where("private = ?", false).limit(num) }
 
 
   def private?
