@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150519195248) do
 
-  create_table "contributors", force: :cascade do |t|
+  create_table "contributions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "wiki_id"
     t.datetime "created_at", null: false

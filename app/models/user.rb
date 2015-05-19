@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
-  has_many :contributors
+  has_many :contributions
+  has_many :contributing_wikis, :through => :contributions, :source => :wiki
 
   validates_uniqueness_of :name
   after_initialize :init, unless: :persisted?

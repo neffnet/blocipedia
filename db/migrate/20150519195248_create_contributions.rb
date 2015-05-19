@@ -1,6 +1,6 @@
-class CreateContributors < ActiveRecord::Migration
+class CreateContributions < ActiveRecord::Migration
   def change
-    create_table :contributors do |t|
+    create_table :contributions do |t|
       t.references :user
       t.references :wiki
 

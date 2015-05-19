@@ -1,6 +1,7 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
-  has_one :contributor
+  has_many :contributions
+  has_many :contributors, :through => :contributions, :source => :user
 
   validates :title, presence: true
   validates :body, presence: true, length: {minimum: 10}

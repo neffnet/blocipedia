@@ -1,6 +1,6 @@
 class WikiPolicy < ApplicationPolicy
   def show?
-    if record.private? && !(record.user == current_user)
+    if record.private? && !(record.user == user) && !(record.contributors.includes(user))
       false
     else
       true
@@ -12,7 +12,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? unless ( record.private? && !record.contributor.include?(current_user))
+    if record.private?
+      record.user == user || record.contributors.include?(user)
+    else
+      user.present?
+    end
   end
 
   def destroy?
