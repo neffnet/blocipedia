@@ -16,5 +16,6 @@ class Wiki < ActiveRecord::Base
 
   def init
     self.private ||= false
+    self.contributors << self.user
   end
 end
