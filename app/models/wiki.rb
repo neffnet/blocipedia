@@ -11,7 +11,7 @@ class Wiki < ActiveRecord::Base
 
 
   def private?
-    wiki.private
+    self.private
   end
 
   def init
