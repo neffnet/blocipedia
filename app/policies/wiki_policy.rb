@@ -1,7 +1,7 @@
 class WikiPolicy < ApplicationPolicy
   def show?
-    if record.private? && !(record.user == user) && !(record.contributors.includes(user))
-      false
+    if record.private?
+      record.user == user || record.contributors.exists?(user)
     else
       true
     end
@@ -13,7 +13,7 @@ class WikiPolicy < ApplicationPolicy
 
   def update?
     if record.private?
-      record.user == user || record.contributors.include?(user)
+      record.user == user || record.contributors.exists?(user)
     else
       user.present?
     end
