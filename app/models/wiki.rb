@@ -1,5 +1,6 @@
 class Wiki < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :owner, class_name: 'User'
+  has_and_belongs_to_many :users
 
   validates :title, presence: true
   validates :body, presence: true, length: {minimum: 10}
@@ -16,6 +17,5 @@ class Wiki < ActiveRecord::Base
 
   def init
     self.private ||= false
-    self.contributors << self.user
   end
 end

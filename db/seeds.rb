@@ -26,14 +26,25 @@ end
 
 # create some Wikis
 20.times do
+  u = User.all.sample
   body = Faker::Lorem.paragraph
-  3.times{body << "<br><br>" << Faker::Lorem.paragraph}
-  w = Wiki.new(
+  3.times{body << "<br><br><br>" << Faker::Lorem.paragraph}
+  w = u.wikis.build(
     title: Faker::Lorem.sentence,
-    body: body,
-    user: User.all.sample
+    body: body
   )
   w.save
+end
+
+# pick 5 wikis to add some contributors
+5.times do
+  w = Wiki.all.sample
+  3.times do
+    u = User.all.sample
+    if !w.owner == u
+      w.users << u
+    end
+  end
 end
 
 puts "db now has #{User.all.length} users and #{Wiki.all.length} wikis"

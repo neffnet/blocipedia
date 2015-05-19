@@ -44,7 +44,7 @@ class WikisController < ApplicationController
     authorize @wiki
     if @wiki.destroy
       flash[:notice] = "The wiki \"#{@wiki.title}\" has been deleted"
-      redirect_to user_path(@wiki.user)
+      redirect_to user_path(@wiki.owner)
     else
       flash[:error] = "We messed up. Please try again, or contact us"
       render :show

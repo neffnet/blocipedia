@@ -1,6 +1,6 @@
 class WikiPolicy < ApplicationPolicy
   def show?
-    true unless ( record.private? && !record.contributors.include?(current_user) )
+    true unless ( record.private? && !record.users.include?(current_user) )
   end
 
   def create?
@@ -8,10 +8,10 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? unless ( record.private? && !record.contributors.include?(current_user))
+    user.present? unless ( record.private? && !record.users.include?(current_user))
   end
 
   def destroy?
-    user.present? && ( record.user == user || user.admin? )
+    user.present? && ( record.owner == user || user.admin? )
   end
 end
