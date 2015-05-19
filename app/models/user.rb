@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_and_belongs_to_many :wikis
+  has_many :wikis
+  has_many :contributors
 
   validates_uniqueness_of :name
   after_initialize :init, unless: :persisted?

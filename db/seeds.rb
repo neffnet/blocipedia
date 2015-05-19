@@ -36,15 +36,15 @@ end
   w.save
 end
 
-# pick 5 wikis to add some contributors
-5.times do
-  w = Wiki.all.sample
-  3.times do
-    u = User.all.sample
-    if !w.owner == u
-      w.users << u
-    end
-  end
-end
+# # pick 5 wikis to add some contributors
+# 5.times do
+#   w = Wiki.all.sample
+#   3.times do
+#     u = User.all.sample
+#     if !(w.user == u)
+#       w.contributor.new(user: u)
+#     end
+#   end
+# end
 
 puts "db now has #{User.all.length} users and #{Wiki.all.length} wikis"

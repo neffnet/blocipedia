@@ -1,6 +1,6 @@
 %ul.breadcrumbs
   %li= link_to 'BLOCIPEDIA', root_path
-  %li= link_to @wiki.owner.name, user_path(@wiki.owner)
+  %li= link_to @wiki.user.name, user_path(@wiki.user)
   %li.current= @wiki.title
   %li.show-for-medium-up Created #{ @wiki.created_at.strftime('%B %e, %Y') }
   %li.hidden-for-medium-up Created #{ @wiki.created_at.strftime('%m/%d/%y') }
