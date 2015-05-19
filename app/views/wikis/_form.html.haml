@@ -4,7 +4,8 @@
     = f.input :body, placeholder: 'Write your wiki here...', input_html: {rows: 10}
     - if current_user.premium? || current_user.admin?
       = f.input :private, label: "Make this private"
-      = f.association :contributors, :collection => User.all
+      %label Note that everyone may contribute by default if this is not a private wiki 
+      = f.association :contributors, :collection => User.all, :label => 'Add Contributors (ctrl-click to select multiple)'
     = f.submit "Save", class: "button radius"
 #wiki-preview.large-6.columns
   %p Soon this space will show a live preview of what your wiki will look like...

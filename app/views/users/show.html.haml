@@ -8,18 +8,19 @@
       %p #{ @user.name } has not created any public wikis. If you expected to see something here, please make sure you are signed in and that #{ @user.name } has added your username (#{current_user.name}) to their list of contributors.
     - if ( current_user == @user ) 
       = link_to 'New Wiki', new_wiki_path(@wiki), class: 'button'
-    - if current_user == @user && current_user.standard?
-      %p You are currently using the free version of Blocipedia. You may create as many Wikis as you like and share them using this URL; your readers don't need to sign in to view your Wikis. Any other Blocipedia members may login and edit your work. We think the people here are pretty nice, but if you're worried about vandalism you should probably save a local copy of your Wiki. (As of today, we do not have the capability to restore old versions of your Wikis.) You are the only person who may create or delete Wikis from your profile.
+      %h4 Hi, #{@user.name}!
+      - if current_user.standard?
+        %p You are currently using the free version of Blocipedia. You may create as many Wikis as you like and share them using this URL; your readers don't need to sign in to view your Wikis. Any other Blocipedia members may login and edit your work. We think the people here are pretty nice, but if you're worried about vandalism you should probably save a local copy of your Wiki. (As of today, we do not have the capability to restore old versions of your Wikis.) You are the only person who may create or delete Wikis from your profile.
 
-      %p We also offer a Premium Membership that allows you to choose if your Wikis are public or private. This is a great service for small organizations who need to maintain a collection of documents that all team members can easily access or edit. When you make a private Wiki, you'll be able to designate a list of Blocipedia contributors. These contributors will be the only members who can see or edit your Wikis.
+        %p We also offer a Premium Membership that allows you to choose if your Wikis are public or private. This is a great service for small organizations who need to maintain a collection of documents that all team members can easily access or edit. When you make a private Wiki, you'll be able to designate a list of Blocipedia contributors. These contributors will be the only members who can see or edit your Wikis.
 
-      %p Ready to go Premium?
-      = render 'charges/button'
+        %p Ready to go Premium?
+        = render 'charges/button'
 
-    - elsif current_user == @user && current_user.premium?
-      %p Thanks for being a Premium Blocipedia Member! Your support encourages us to keep improving the site's features. As a Premium Member, you enjoy the ability to create private wikis. If you wish, you may downgrade your account back to Standard level. (Reminder: your Premium Membership does not expire, and we will never charge your account again.) If you downgrade, all of your private wikis will immediately become public. If any of your private wikis contain sensitive information, you may want to delete them before downgrading.
+      - elsif current_user.premium?
+        %p Thanks for being a Premium Blocipedia Member! Your support encourages us to keep improving the site's features. As a Premium Member, you enjoy the ability to create private wikis. If you wish, you may downgrade your account back to Standard level. (Reminder: your Premium Membership does not expire, and we will never charge your account again.) If you downgrade, all of your private wikis will immediately become public. If any of your private wikis contain sensitive information, you may want to delete them before downgrading.
 
-      =link_to 'Downgrade', '#', class: 'button alert small disabled'
+        =link_to 'Downgrade', '#', class: 'button alert small disabled'
 
   #us-left.medium-4.medium-pull-8.columns
     %h4 User Info
