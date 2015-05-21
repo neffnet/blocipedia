@@ -15,8 +15,10 @@ class UsersController < ApplicationController
   def downgrade
     @user = User.find(params[:user_id])
     authorize @user, :downgrade?
+    @private_wikis = @user.wikis.where(private: true)
     if @user.update_attributes(role:'standard')
       flash[:notice] = "Your account role is now Standard"
+      @private_wikis.each{|w|w.toggle!(:private)}
       redirect_to @user
     else
       flash[:error] = "Sorry, something went wrong. Please try again."
