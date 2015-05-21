@@ -20,7 +20,7 @@
       - elsif current_user.premium?
         %p Thanks for being a Premium Blocipedia Member! Your support encourages us to keep improving the site's features. As a Premium Member, you enjoy the ability to create private wikis. If you wish, you may downgrade your account back to Standard level. (Reminder: your Premium Membership does not expire, and we will never charge your account again.) If you downgrade, all of your private wikis will immediately become public. If any of your private wikis contain sensitive information, you may want to delete them before downgrading.
 
-        =link_to 'Downgrade', '#', class: 'button alert small disabled'
+        =link_to 'Downgrade', user_downgrade_path(@user), class: 'button alert small', method: :post, data: {confirm: 'Are you sure you want to downgrade your account? Any of your private wikis will become public, and you will need to buy a new membership if you change your mind!'}
 
   #us-left.medium-4.medium-pull-8.columns
     %h4 User Info

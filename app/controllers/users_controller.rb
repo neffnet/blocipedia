@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def downgrade
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     authorize @user, :downgrade?
     if @user.update_attributes(role:'standard')
       flash[:notice] = "Your account role is now Standard"
