@@ -1,6 +1,6 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
   has_many :contributors, :through => :contributions, :source => :user
 
   validates :title, presence: true
