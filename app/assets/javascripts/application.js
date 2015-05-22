@@ -14,12 +14,29 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require marked
 //= require_tree .
-
 $(function(){ $(document).foundation(); });
 
-if ($('.alert-box').length >= 0) {
-  setTimeout(function(){
-      $('.alert-box .close').click();
-    }, 2000);
-}
+var ready;
+ready = function(){
+
+// auto-fadeout alerts
+  if ($('.alert-box').length >= 0) {
+    setTimeout(function(){
+        $('.alert-box .close').click();
+      }, 2000);
+    }
+
+// wiki preview button
+  $('.prev-btn').click(function(){
+    var wiki_body = $('#wiki_body').val();
+    var title = $('#wiki_title').val();
+    var formatted_body = marked(wiki_body)
+    $('#wiki-preview h3').html(title);
+    $('#preview-body').html(formatted_body);
+  });
+
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);

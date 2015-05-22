@@ -19,6 +19,10 @@ gem 'rails', '4.2.1'
 gem 'haml-rails', '~> 0.9'
 # Zurb Foundation CSS framework
 gem 'foundation-rails'
+# RedCarpet for Markdown formatting on server
+gem 'redcarpet'
+# MarkD for Markdown formatting by client with js
+gem 'marked-rails'
 # simpler form helper
 gem 'simple_form'
 # Devise gem for user authentication
