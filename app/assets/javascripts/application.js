@@ -15,6 +15,7 @@
 //= require foundation
 //= require turbolinks
 //= require marked
+//= require blocmetrics
 //= require_tree .
 $(function(){ $(document).foundation(); });
 
@@ -35,6 +36,11 @@ ready = function(){
     var formatted_body = marked(wiki_body)
     $('#wiki-preview h3').html(title);
     $('#preview-body').html(formatted_body);
+  });
+
+// send events to blocmetrics api
+  $('#free a').click(function(){
+    blocmetrics.report('sign_up_click');
   });
 
 };
