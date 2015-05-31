@@ -38,10 +38,12 @@ ready = function(){
     $('#preview-body').html(formatted_body);
   });
 
-// send events to blocmetrics api
+// send sign_up_click events to blocmetrics api
   $('#free a').click(function(){
     blocmetrics.report('sign_up_click');
   });
+// send page-load event to blocmetrics api
+blocmetrics.report('page-load');
 
 };
 $(document).ready(ready);

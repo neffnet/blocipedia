@@ -25,6 +25,8 @@ gem 'redcarpet'
 gem 'marked-rails'
 # simpler form helper
 gem 'simple_form'
+# allow cors
+gem 'rack-cors', :require => 'rack/cors'
 # Devise gem for user authentication
 gem 'devise'
 # Stripe to process payments
