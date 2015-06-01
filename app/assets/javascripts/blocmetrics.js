@@ -1,1 +1,1 @@
-blocmetrics={report:function(e){var t={name:e},n=new XMLHttpRequest;n.open("POST","http://neffnet-blocmetrics.herokuapp.com/api/events",!0),n.setRequestHeader("Content-Type","application/json"),n.onreadystatechange=function(){},n.send(JSON.stringify(t))}};
+blocmetrics={report:function(e){var t={name:e},n=new XMLHttpRequest;n.open("POST","https://neffnet-blocmetrics.herokuapp.com/api/events",!0),n.setRequestHeader("Content-Type","application/json"),n.onreadystatechange=function(){},n.send(JSON.stringify(t))}};
